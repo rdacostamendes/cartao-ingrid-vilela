@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingrid Vilela Beauty | Beleza & Alto Padrão</title>
+  
+  <!-- Fontes elegantes do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Ícones FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0d0b0c;
+      --card-bg: #171315;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --pink: #e87a90;
+      --pink-soft: rgba(232, 122, 144, 0.15);
+      --text-main: #f8f5f6;
+      --text-muted: #b8aeb2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #070606;
+      background-image: radial-gradient(circle at top center, rgba(232, 122, 144, 0.14), transparent 55%),
+                        radial-gradient(circle at bottom center, rgba(212, 175, 55, 0.12), transparent 60%);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    /* Container central estilo Mobile App */
+    .app-container {
+      width: 100%;
+      max-width: 440px;
+      background-color: var(--bg-dark);
+      min-height: 100vh;
+      padding: 36px 22px 28px;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+      border-left: 1px solid rgba(212, 175, 55, 0.15);
+      border-right: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    /* Cabeçalho / Perfil */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar-ring {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--gold), var(--pink), var(--gold-light));
+      box-shadow: 0 8px 25px rgba(232, 122, 144, 0.25);
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: var(--card-bg);
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--pink-soft);
+      color: var(--pink);
+      border: 1px solid rgba(232, 122, 144, 0.35);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--gold-light), var(--gold), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    /* Botão Principal WhatsApp */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold) 0%, #b88c1e 100%);
+      color: #0d0b0c;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary i {
+      font-size: 1.25rem;
+    }
+
+    /* Seção de Serviços Rápidos (Agendamento Direto) */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(212, 175, 55, 0.4), transparent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(232, 122, 144, 0.2);
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover, .service-card:active {
+      border-color: var(--gold);
+      background: #1f191c;
+      transform: translateY(-2px);
+    }
+
+    .service-card i {
+      color: var(--pink);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .service-card span {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Lista de Links Úteis */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .link-item:hover, .link-item:active {
+      border-color: var(--pink);
+      background: #1e181b;
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--pink-soft);
+      color: var(--pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .link-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .link-text small {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .link-arrow {
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    /* Horário e Info */
+    .info-box {
+      background: linear-gradient(145deg, rgba(232, 122, 144, 0.08), rgba(212, 175, 55, 0.06));
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .info-box p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .info-box strong {
+      color: var(--gold-light);
+    }
+
+    /* Rodapé */
+    .footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6e6468;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+    }
+
+    /* Toast de aviso (Pix copiado) */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--gold);
+      color: #0d0b0c;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="app-container">
+    <!-- Perfil -->
+    <header class="header">
+      <div class="avatar-ring">
+        <img
+          src="logo.jpg"
+          alt="Logo Ingrid Vilela Beauty"
+          onerror="if(!this.dataset.triedPng){this.dataset.triedPng='1';this.src='logo.png';}"
+        >
+      </div>
+      <span class="badge">Especialista em Alisamentos e Cacheados</span>
+      <h1>Ingrid Vilela Beauty</h1>
+      <p class="subtitle">Realçando sua beleza natural com técnicas exclusivas e atendimento personalizado.</p>
+    </header>
+
+    <!-- Botão Principal -->
+    <a href="#" id="btn-whatsapp-main" class="btn-primary">
+      <i class="fab fa-whatsapp"></i>
+      Agendar Horário Agora
+    </a>
+
+    <!-- Serviços com Clique Direto para WhatsApp -->
+    <h2 class="section-title">Agendamento Rápido</h2>
+    <div class="services-grid">
+      <div class="service-card" onclick="agendarServico('Mechas & Iluminado')">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        <h3>Mechas & Morena Iluminada</h3>
+        <span>Consultar <i class="fas fa-arrow-right"></i></span>
+      </div>
+
+      <div class="service-card" onclick="agendarServico('Corte & Escova Modelada')">
+        <i class="fas fa-scissors"></i>
+        <h3>Corte & Escova</h3>
+        <span>Agendar <i class="fas fa-arrow-right"></i></span>
+      </div>
+
+      <div class="service-card" onclick="agendarServico('Cronograma Capilar / Hidratação')">
+        <i class="fas fa-spa"></i>
+        <h3>Terapia & Cronograma</h3>
+        <span>Agendar <i class="fas fa-arrow-right"></i></span>
+      </div>
+
+      <div class="service-card" onclick="agendarServico('Alisamento / Progressiva')">
+        <i class="fas fa-crown"></i>
+        <h3>Alisamento Orgânico</h3>
+        <span>Agendar <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>
+
+    <!-- Links Interativos -->
+    <h2 class="section-title">Acesso Rápido</h2>
+    <div class="links-list">
+      <a href="https://maps.app.goo.gl/kAQv4NQwwSzeTiRR8" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon"><i class="fas fa-location-dot"></i></div>
+          <div class="link-text">
+            <strong>Como Chegar (GPS)</strong>
+            <small>R. Campinas de Brotas, 209 - Brotas, Salvador - BA, 40275-160</small>
+          </div>
+        </div>
+        <i class="fas fa-chevron-right link-arrow"></i>
+      </a>
+
+      <a href="https://www.instagram.com/ingridvilelabeauty/" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon"><i class="fab fa-instagram"></i></div>
+          <div class="link-text">
+            <strong>Resultados & Transformações</strong>
+            <small>Veja nosso portfólio no Instagram</small>
+          </div>
+        </div>
+        <i class="fas fa-chevron-right link-arrow"></i>
+      </a>
+
+      <div class="link-item" onclick="copiarPix()">
+        <div class="link-left">
+          <div class="link-icon"><i class="fas fa-qrcode"></i></div>
+          <div class="link-text">
+            <strong>Chave Pix (Sinal / Pagamento)</strong>
+            <small>Toque para copiar o celular</small>
+          </div>
+        </div>
+        <i class="far fa-copy link-arrow"></i>
+      </div>
+    </div>
+
+    <!-- Horário de Funcionamento -->
+    <div class="info-box">
+      <p>
+        <strong>Horário de Atendimento:</strong><br>
+        Terça a Sábado • 09h às 19h<br>
+        Atendimento com hora marcada
+      </p>
+    </div>
+
+    <footer class="footer">
+      © 2026 Ingrid Vilela Beauty • Todos os direitos reservados
+    </footer>
+  </main>
+
+  <!-- Notificação Flutuante -->
+  <div id="toast" class="toast">Chave Pix copiada com sucesso!</div>
+
+  <script>
+    // CONFIGURAÇÃO RÁPIDA DO CLIENTE (Edite apenas aqui)
+    const CONFIG = {
+      whatsapp: "5571992246936", // DDI + DDD + Número
+      chavePix: "71992246936",
+      nomeSalao: "Ingrid Vilela Beauty"
+    };
+
+    // Botão Principal
+    document.getElementById("btn-whatsapp-main").addEventListener("click", function(e) {
+      e.preventDefault();
+      const msg = encodeURIComponent(`Olá! Vim pelo cartão digital do *${CONFIG.nomeSalao}* e gostaria de agendar um horário.`);
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, "_blank");
+    });
+
+    // Agendamento direto por serviço clicado
+    function agendarServico(servico) {
+      const msg = encodeURIComponent(`Olá! Gostaria de saber valores e horários disponíveis para *${servico}*.`);
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, "_blank");
+    }
+
+    // Copiar Chave Pix
+    function copiarPix() {
+      navigator.clipboard.writeText(CONFIG.chavePix).then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2600);
+      });
+    }
+  </script>
+</body>
+</html>
